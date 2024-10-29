@@ -1,0 +1,13 @@
+#include "../include/FTPServer.h"
+#include <iostream>
+
+int main() {
+    std::cout << "Starting FTP Server..." << std::endl;
+    
+    FTPServer server;
+    server.start();
+    
+    std::cout << "FTP Server started successfully!" << std::endl;
+    
+    return 0;
+}

@@ -1,0 +1,30 @@
+#ifndef FTP_SERVER_H
+#define FTP_SERVER_H
+
+#include <string>
+#include <vector>
+
+class FTPServer {
+public:
+    // Constructor and destructor
+    FTPServer(int port = 21);  // Default FTP port is 21
+    ~FTPServer();
+
+    // Core FTP operations
+    bool start();  // Start the FTP server
+    void stop();   // Stop the FTP server
+
+    // File operations required by the exercise
+    bool uploadFile(const std::string& filename);
+    bool downloadFile(const std::string& filename);
+    bool deleteFile(const std::string& filename);
+    std::vector<std::string> searchFile(const std::string& pattern);
+    std::vector<std::string> listFiles();
+
+private:
+    int port_;
+    bool running_;
+    // Add more private members as needed
+};
+
+#endif // FTP_SERVER_H

@@ -1,0 +1,58 @@
+#include "../include/FTPServer.h"
+#include <iostream>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+
+FTPServer::FTPServer(int port) : port_(port), running_(false) {
+    // Initialize your server here
+}
+
+FTPServer::~FTPServer() {
+    if (running_) {
+        stop();
+    }
+}
+
+bool FTPServer::start() {
+    // Implementation for starting the server
+    std::cout << "Starting FTP server on port " << port_ << std::endl;
+    running_ = true;
+    return true;
+}
+
+void FTPServer::stop() {
+    // Implementation for stopping the server
+    std::cout << "Stopping FTP server" << std::endl;
+    running_ = false;
+}
+
+bool FTPServer::uploadFile(const std::string& filename) {
+    // Implementation for file upload
+    std::cout << "Uploading file: " << filename << std::endl;
+    return true;
+}
+
+bool FTPServer::downloadFile(const std::string& filename) {
+    // Implementation for file download
+    std::cout << "Downloading file: " << filename << std::endl;
+    return true;
+}
+
+bool FTPServer::deleteFile(const std::string& filename) {
+    // Implementation for file deletion
+    std::cout << "Deleting file: " << filename << std::endl;
+    return true;
+}
+
+std::vector<std::string> FTPServer::searchFile(const std::string& pattern) {
+    // Implementation for file search
+    std::cout << "Searching for files matching pattern: " << pattern << std::endl;
+    return std::vector<std::string>();
+}
+
+std::vector<std::string> FTPServer::listFiles() {
+    // Implementation for listing files
+    std::cout << "Listing all files" << std::endl;
+    return std::vector<std::string>();
+}

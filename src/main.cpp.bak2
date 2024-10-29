@@ -1,0 +1,39 @@
+#include "../include/FTPServer.h"
+#include <iostream>
+#include <signal.h>
+#include <atomic>
+
+std::atomic<bool> running(true);
+
+void signalHandler(int signum) {
+    std::cout << "\nSignal (" << signum << ") received. Shutting down...\n";
+    running = false;
+}
+
+int main() {
+    // Register signal handler for Ctrl+C
+    signal(SIGINT, signalHandler);
+    
+    std::cout << "Starting FTP Server..." << std::endl;
+    
+    FTPServer server;
+    if (!server.start()) {
+        std::cerr << "Failed to start FTP server!" << std::endl;
+        return 1;
+    }
+    
+    std::cout << "FTP Server started successfully!" << std::endl;
+    std::cout << "Press Ctrl+C to stop the server." << std::endl;
+    
+    // Keep the server running
+    while (running) {
+        // Server main loop
+        // Will add actual server logic here later
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+    
+    server.stop();
+    std::cout << "Server shutdown complete." << std::endl;
+    
+    return 0;
+}

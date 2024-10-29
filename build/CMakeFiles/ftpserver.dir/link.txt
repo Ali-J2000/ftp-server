@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/ftpserver.dir/src/main.cpp.o CMakeFiles/ftpserver.dir/src/FTPServer.cpp.o CMakeFiles/ftpserver.dir/src/Utility.cpp.o  -o ftpserver  -lpthread 
